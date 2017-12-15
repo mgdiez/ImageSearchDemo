@@ -1,7 +1,8 @@
-package com.marcgdiez.imagesearchdemo;
+package com.marcgdiez.imagesearchdemo.app;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import com.marcgdiez.imagesearchdemo.R;
 
 public class MainActivity extends AppCompatActivity {
 
