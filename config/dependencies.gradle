@@ -21,6 +21,7 @@ ext {
   jUnitVersion = '4.12'
   testRunnerVersion = '1.0.1'
   espressoVersion = '3.0.1'
+  mockitoVersion = '1.9.5'
 
   dependencies = [support         : "com.android.support:appcompat-v7:${supportVersion}",
                   constraintLayout: "com.android.support.constraint:constraint-layout:${constraintVersion}",
@@ -31,5 +32,6 @@ ext {
 
   testDependencies = [junit     : "junit:junit:${jUnitVersion}",
                       testRunner: "com.android.support.test:runner:${testRunnerVersion}",
-                      espresso  : "com.android.support.test.espresso:espresso-core:${espressoVersion}"]
+                      espresso  : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+                      mockito   : "org.mockito:mockito-core:${mockitoVersion}"]
 }
