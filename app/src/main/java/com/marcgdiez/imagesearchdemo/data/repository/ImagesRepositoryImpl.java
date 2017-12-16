@@ -6,6 +6,7 @@ import com.marcgdiez.imagesearchdemo.entity.ImageEntity;
 import java.util.List;
 import javax.inject.Inject;
 import rx.Observable;
+import rx.schedulers.Schedulers;
 
 public class ImagesRepositoryImpl implements ImagesRepository {
 
@@ -24,8 +25,10 @@ public class ImagesRepositoryImpl implements ImagesRepository {
   }
 
   @Override public Observable<List<ImageEntity>> getImages(String query) {
-    return Observable.concat(
-        flickerDataSource.searchImages(query).onErrorResumeNext(Observable.empty()),
-        twitterNetworkDataSource.searchImages(query).onErrorResumeNext(Observable.empty()));
+    return Observable.concat(flickerDataSource.searchImages(query)
+        .onErrorResumeNext(Observable.empty())
+        .subscribeOn(Schedulers.io()), twitterNetworkDataSource.searchImages(query)
+        .onErrorResumeNext(Observable.empty())
+        .subscribeOn(Schedulers.io()));
   }
 }

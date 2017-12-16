@@ -55,6 +55,7 @@ public class ImagesRepositoryShould {
 
     imagesRepository.getImages("Foo").subscribe(testSubscriber);
 
+    testSubscriber.awaitTerminalEvent();
     testSubscriber.assertNoErrors();
     testSubscriber.assertCompleted();
     testSubscriber.assertValue(fakeImages);
@@ -69,6 +70,7 @@ public class ImagesRepositoryShould {
 
     imagesRepository.getImages("Foo").subscribe(testSubscriber);
 
+    testSubscriber.awaitTerminalEvent();
     testSubscriber.assertNoErrors();
     testSubscriber.assertCompleted();
     testSubscriber.assertValue(fakeImages);
