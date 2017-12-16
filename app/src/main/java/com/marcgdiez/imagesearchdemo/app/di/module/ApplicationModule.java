@@ -8,6 +8,7 @@ import com.marcgdiez.imagesearchdemo.data.flickr.FlickrApiConstants;
 import com.marcgdiez.imagesearchdemo.data.flickr.FlickrNetworkDataSource;
 import com.marcgdiez.imagesearchdemo.data.repository.ImagesRepository;
 import com.marcgdiez.imagesearchdemo.data.repository.ImagesRepositoryImpl;
+import com.marcgdiez.imagesearchdemo.data.twitter.TwitterNetworkDataSource;
 import dagger.Module;
 import dagger.Provides;
 import java.util.concurrent.Executor;
@@ -24,8 +25,9 @@ import javax.inject.Singleton;
   }
 
   @Provides @Singleton
-  public ImagesRepository provideImagesRepository(FlickrNetworkDataSource flickrDataSource) {
-    return new ImagesRepositoryImpl(flickrDataSource);
+  public ImagesRepository provideImagesRepository(FlickrNetworkDataSource flickrDataSource,
+      TwitterNetworkDataSource twitterNetworkDataSource) {
+    return new ImagesRepositoryImpl(flickrDataSource, twitterNetworkDataSource);
   }
 
   @Provides @Singleton public FlickrApi provideFlickrApi() {
