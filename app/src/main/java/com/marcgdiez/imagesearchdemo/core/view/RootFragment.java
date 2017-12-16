@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.marcgdiez.imagesearchdemo.core.di.HasComponent;
 import com.marcgdiez.imagesearchdemo.core.presenter.Presenter;
 
 public abstract class RootFragment extends Fragment {
@@ -60,4 +61,8 @@ public abstract class RootFragment extends Fragment {
   }
 
   protected abstract Presenter getPresenter();
+
+  @SuppressWarnings("unchecked") protected <C> C getComponent(Class<C> componentType) {
+    return componentType.cast(((HasComponent<C>) getActivity()).getComponent());
+  }
 }
