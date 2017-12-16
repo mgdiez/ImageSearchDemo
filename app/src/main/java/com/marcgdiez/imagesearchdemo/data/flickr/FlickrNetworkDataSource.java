@@ -17,7 +17,7 @@ public class FlickrNetworkDataSource implements NetworkDataSource {
     this.flickrDtoMapper = flickrDtoMapper;
   }
 
-  @Override public Observable<List<ImageEntity>> searchFlickerImages(String query) {
+  @Override public Observable<List<ImageEntity>> searchImages(String query) {
     return flickrApi.search(query).map(flickrDtoMapper::toEntity);
   }
 }

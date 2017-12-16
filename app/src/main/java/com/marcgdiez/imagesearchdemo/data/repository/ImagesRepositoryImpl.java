@@ -15,6 +15,6 @@ public class ImagesRepositoryImpl implements ImagesRepository {
   }
 
   @Override public Observable<List<ImageEntity>> getFlickerImages(String query) {
-    return flickerDataSource.searchFlickerImages(query);
+    return flickerDataSource.searchImages(query);
   }
 }
