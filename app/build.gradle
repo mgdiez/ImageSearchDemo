@@ -44,7 +44,8 @@ dependencies {
   implementation dependencies.rxJavaAdapter
   implementation dependencies.recyclerView
   implementation dependencies.butterKnife
-  implementation dependencies.butterKnifeCompiler
+  annotationProcessor dependencies.butterKnifeCompiler
+  implementation dependencies.picasso
 
   implementation dependencies.loggingInterceptor
   implementation dependencies.gson

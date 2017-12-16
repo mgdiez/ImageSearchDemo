@@ -21,7 +21,7 @@ ext {
   okHttpVersion = '3.6.0'
   gsonVersion = '2.8.0'
   butterKnifeVersion = '8.8.1'
-
+  picassoVersion = '2.5.2'
 
   jUnitVersion = '4.12'
   testRunnerVersion = '1.0.1'
@@ -42,7 +42,8 @@ ext {
                   gson               : "com.google.code.gson:gson:${gsonVersion}",
                   recyclerView       : "com.android.support:recyclerview-v7:${supportVersion}",
                   butterKnife        : "com.jakewharton:butterknife:${butterKnifeVersion}",
-                  butterKnifeCompiler: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"]
+                  butterKnifeCompiler: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
+                  picasso            : "com.squareup.picasso:picasso:${picassoVersion}"]
 
   testDependencies = [junit     : "junit:junit:${jUnitVersion}",
                       testRunner: "com.android.support.test:runner:${testRunnerVersion}",
