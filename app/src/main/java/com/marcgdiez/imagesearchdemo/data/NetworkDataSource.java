@@ -6,5 +6,5 @@ import rx.Observable;
 
 public interface NetworkDataSource {
 
-  Observable<List<ImageEntity>> searchFlickerImages(String query);
+  Observable<List<ImageEntity>> searchImages(String query);
 }
