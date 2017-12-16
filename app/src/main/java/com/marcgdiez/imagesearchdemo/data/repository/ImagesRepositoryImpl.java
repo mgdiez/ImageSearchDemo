@@ -14,15 +14,18 @@ public class ImagesRepositoryImpl implements ImagesRepository {
 
   @Inject public ImagesRepositoryImpl(FlickrNetworkDataSource flickerDataSource,
       TwitterNetworkDataSource twitterNetworkDataSource) {
+
+    if (flickerDataSource == null || twitterNetworkDataSource == null) {
+      throw new IllegalArgumentException("ImagesRepository parameters can't be null");
+    }
+
     this.flickerDataSource = flickerDataSource;
     this.twitterNetworkDataSource = twitterNetworkDataSource;
   }
 
-  @Override public Observable<List<ImageEntity>> getFlickerImages(String query) {
-    return flickerDataSource.searchImages(query);
-  }
-
-  @Override public Observable<List<ImageEntity>> getTwitterImages(String query) {
-    return twitterNetworkDataSource.searchImages(query);
+  @Override public Observable<List<ImageEntity>> getImages(String query) {
+    return Observable.concat(
+        flickerDataSource.searchImages(query).onErrorResumeNext(Observable.empty()),
+        twitterNetworkDataSource.searchImages(query).onErrorResumeNext(Observable.empty()));
   }
 }
