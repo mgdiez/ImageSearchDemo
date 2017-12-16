@@ -42,6 +42,9 @@ dependencies {
   implementation dependencies.retrofit
   implementation dependencies.gsonConverter
   implementation dependencies.rxJavaAdapter
+  implementation dependencies.recyclerView
+  implementation dependencies.butterKnife
+  implementation dependencies.butterKnifeCompiler
 
   implementation dependencies.loggingInterceptor
   implementation dependencies.gson
