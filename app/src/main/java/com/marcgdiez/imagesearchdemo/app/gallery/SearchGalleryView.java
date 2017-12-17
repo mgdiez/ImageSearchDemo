@@ -14,4 +14,6 @@ public interface SearchGalleryView extends IView {
   void showError();
 
   void showNoResults();
+
+  void showEmptyState();
 }

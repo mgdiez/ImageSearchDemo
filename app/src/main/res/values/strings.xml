@@ -2,4 +2,6 @@
   <string name="app_name">ImageSearchDemo</string>
   <string name="search">Search</string>
   <string name="error_message">Something went wrong :(</string>
+  <string name="no_results">No results found</string>
+  <string name="empty_state">Start searching some awesome images</string>
 </resources>

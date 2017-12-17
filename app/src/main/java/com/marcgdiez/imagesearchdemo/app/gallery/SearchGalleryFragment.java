@@ -1,7 +1,6 @@
 package com.marcgdiez.imagesearchdemo.app.gallery;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -29,7 +28,7 @@ public class SearchGalleryFragment extends RootFragment implements SearchGallery
 
   @BindView(R.id.recyclerView) RecyclerView recyclerView;
   @BindView(R.id.progressBar) ContentLoadingProgressBar progressBar;
-  @BindView(R.id.error) TextView error;
+  @BindView(R.id.feedback) TextView feedback;
 
   private MenuItem searchItem;
 
@@ -86,19 +85,26 @@ public class SearchGalleryFragment extends RootFragment implements SearchGallery
   @Override public void showProgress() {
     progressBar.setVisibility(View.VISIBLE);
     recyclerView.setVisibility(View.GONE);
-    error.setVisibility(View.GONE);
+    feedback.setVisibility(View.GONE);
   }
 
   @Override public void hideProgress() {
     progressBar.setVisibility(View.GONE);
-    error.setVisibility(View.GONE);
+    feedback.setVisibility(View.GONE);
   }
 
   @Override public void showError() {
-    error.setVisibility(View.VISIBLE);
+    feedback.setText(R.string.error_message);
+    feedback.setVisibility(View.VISIBLE);
   }
 
   @Override public void showNoResults() {
+    feedback.setText(R.string.no_results);
+    feedback.setVisibility(View.VISIBLE);
+  }
 
+  @Override public void showEmptyState() {
+    feedback.setText(R.string.empty_state);
+    feedback.setVisibility(View.VISIBLE);
   }
 }

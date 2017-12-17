@@ -45,6 +45,14 @@ public class SearchGalleryPresenterShould {
     verify(mockStoryController).getStoryState();
   }
 
+  @Test public void show_empty_state_when_needed() {
+    when(mockStoryController.getStoryState()).thenReturn(mock(SearchImagesState.class));
+
+    presenter.start();
+
+    verify(mockView).showEmptyState();
+  }
+
   @Test public void show_images_on_initialize_if_has() {
     when(mockStoryController.getStoryState()).thenReturn(mock(SearchImagesState.class));
 

@@ -27,8 +27,10 @@ public class SearchGalleryPresenter extends Presenter<SearchGalleryView> {
 
     if (storyState != null) {
       List<ImageEntity> imageList = storyState.getImageList();
-      if (imageList != null) {
+      if (imageList != null && !imageList.isEmpty()) {
         view.showData(imageList);
+      } else {
+        view.showEmptyState();
       }
     }
   }
