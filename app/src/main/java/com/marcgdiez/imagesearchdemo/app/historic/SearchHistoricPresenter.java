@@ -5,13 +5,12 @@ import com.marcgdiez.imagesearchdemo.app.story.SearchImagesStoryController;
 import com.marcgdiez.imagesearchdemo.core.presenter.Presenter;
 import com.marcgdiez.imagesearchdemo.entity.HistoricEntity;
 import java.util.List;
-import javax.inject.Inject;
 
 public class SearchHistoricPresenter extends Presenter<SearchHistoricView> {
 
   private SearchImagesStoryController storyController;
 
-  @Inject public SearchHistoricPresenter(SearchImagesStoryController storyController) {
+  public SearchHistoricPresenter(SearchImagesStoryController storyController) {
     this.storyController = storyController;
   }
 
