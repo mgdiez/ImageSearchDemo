@@ -22,7 +22,7 @@ public class ImageSearchApplication extends Application
 
   private void initializeInjector() {
     applicationComponent =
-        DaggerApplicationComponent.builder().applicationModule(new ApplicationModule()).build();
+        DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
     applicationComponent.inject(this);
   }
 }

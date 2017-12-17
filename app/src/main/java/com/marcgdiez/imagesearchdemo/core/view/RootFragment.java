@@ -7,14 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import butterknife.ButterKnife;
+import com.marcgdiez.imagesearchdemo.core.di.HasComponent;
 import com.marcgdiez.imagesearchdemo.core.presenter.Presenter;
 
 public abstract class RootFragment extends Fragment {
-
-  @Override public void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    initializeInjector();
-  }
 
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -24,7 +21,12 @@ public abstract class RootFragment extends Fragment {
       throw new IllegalArgumentException("Fragment must have a valid layout resource Id");
     }
 
-    return inflater.inflate(fragmentLayoutResourceId, container, false);
+    View view = inflater.inflate(fragmentLayoutResourceId, container, false);
+    if (view != null) {
+      ButterKnife.bind(this, view);
+    }
+
+    return view;
   }
 
   protected abstract void initializePresenter();
@@ -33,6 +35,7 @@ public abstract class RootFragment extends Fragment {
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+    initializeInjector();
     initializeView(view);
     initializePresenter();
   }
@@ -60,4 +63,8 @@ public abstract class RootFragment extends Fragment {
   }
 
   protected abstract Presenter getPresenter();
+
+  @SuppressWarnings("unchecked") protected <C> C getComponent(Class<C> componentType) {
+    return componentType.cast(((HasComponent<C>) getActivity()).getComponent());
+  }
 }

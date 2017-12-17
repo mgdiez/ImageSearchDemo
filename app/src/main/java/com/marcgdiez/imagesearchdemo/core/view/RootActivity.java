@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import butterknife.ButterKnife;
 
 public abstract class RootActivity extends AppCompatActivity {
 
@@ -18,7 +19,15 @@ public abstract class RootActivity extends AppCompatActivity {
 
     findViews();
     initializeActivity(savedInstanceState);
+    ButterKnife.bind(this);
   }
+
+  @Override protected void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    saveState(outState);
+  }
+
+  protected abstract void saveState(Bundle outState);
 
   protected abstract void findViews();
 

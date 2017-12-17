@@ -1,5 +1,7 @@
 package com.marcgdiez.imagesearchdemo.app.di.module;
 
+import android.content.Context;
+import com.marcgdiez.imagesearchdemo.core.ImageSearchApplication;
 import com.marcgdiez.imagesearchdemo.core.executor.MainThread;
 import com.marcgdiez.imagesearchdemo.core.executor.ThreadExecutor;
 import com.marcgdiez.imagesearchdemo.data.ServiceFactory;
@@ -15,6 +17,12 @@ import java.util.concurrent.Executor;
 import javax.inject.Singleton;
 
 @Module public class ApplicationModule {
+
+  private final Context applicationContext;
+
+  public ApplicationModule(ImageSearchApplication demoApplication) {
+    applicationContext = demoApplication.getApplicationContext();
+  }
 
   @Provides @Singleton public Executor provideExecutor() {
     return new ThreadExecutor();
@@ -33,4 +41,9 @@ import javax.inject.Singleton;
   @Provides @Singleton public FlickrApi provideFlickrApi() {
     return ServiceFactory.createRetrofitService(FlickrApi.class, FlickrApiConstants.BASE_URL);
   }
+
+  @Provides @Singleton public Context provideApplicationContext() {
+    return applicationContext;
+  }
+
 }
