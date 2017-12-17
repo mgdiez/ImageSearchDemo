@@ -1,7 +1,7 @@
 package com.marcgdiez.imagesearchdemo.app.di.module;
 
 import android.content.Context;
-import com.marcgdiez.imagesearchdemo.core.ImageSearchApplication;
+import com.marcgdiez.imagesearchdemo.ImageSearchApplication;
 import com.marcgdiez.imagesearchdemo.core.executor.MainThread;
 import com.marcgdiez.imagesearchdemo.core.executor.ThreadExecutor;
 import com.marcgdiez.imagesearchdemo.data.ServiceFactory;

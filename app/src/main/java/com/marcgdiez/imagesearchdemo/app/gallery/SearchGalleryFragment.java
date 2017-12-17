@@ -107,11 +107,15 @@ public class SearchGalleryFragment extends RootFragment implements SearchGallery
   @Override public void showError() {
     feedback.setText(R.string.error_message);
     feedback.setVisibility(View.VISIBLE);
+    recyclerView.setVisibility(View.GONE);
+    progressBar.setVisibility(View.GONE);
   }
 
   @Override public void showNoResults() {
     feedback.setText(R.string.no_results);
     feedback.setVisibility(View.VISIBLE);
+    recyclerView.setVisibility(View.GONE);
+    progressBar.setVisibility(View.GONE);
   }
 
   @Override public void showEmptyState() {

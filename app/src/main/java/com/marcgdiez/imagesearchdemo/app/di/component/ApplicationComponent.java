@@ -3,7 +3,7 @@ package com.marcgdiez.imagesearchdemo.app.di.component;
 import com.marcgdiez.imagesearchdemo.app.di.module.ApplicationModule;
 import com.marcgdiez.imagesearchdemo.app.di.module.ImageSearchComponent;
 import com.marcgdiez.imagesearchdemo.app.di.module.ImageSearchModule;
-import com.marcgdiez.imagesearchdemo.core.ImageSearchApplication;
+import com.marcgdiez.imagesearchdemo.ImageSearchApplication;
 import dagger.Component;
 import javax.inject.Singleton;
 

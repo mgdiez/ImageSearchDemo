@@ -17,7 +17,7 @@ public class SearchGalleryPresenter extends Presenter<SearchGalleryView> {
   private SearchImagesStoryController storyController;
   private SearchImagesUseCase searchImagesUseCase;
 
-  @Inject public SearchGalleryPresenter(SearchImagesStoryController storyController,
+  public SearchGalleryPresenter(SearchImagesStoryController storyController,
       Interactor<List<ImageEntity>> searchImagesUseCase) {
     this.storyController = storyController;
     this.searchImagesUseCase = (SearchImagesUseCase) searchImagesUseCase;

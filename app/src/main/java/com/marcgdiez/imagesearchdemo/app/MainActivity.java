@@ -6,7 +6,7 @@ import com.marcgdiez.imagesearchdemo.R;
 import com.marcgdiez.imagesearchdemo.app.di.module.ImageSearchComponent;
 import com.marcgdiez.imagesearchdemo.app.di.module.ImageSearchModule;
 import com.marcgdiez.imagesearchdemo.app.story.SearchImagesStoryController;
-import com.marcgdiez.imagesearchdemo.core.ImageSearchApplication;
+import com.marcgdiez.imagesearchdemo.ImageSearchApplication;
 import com.marcgdiez.imagesearchdemo.core.di.HasComponent;
 import com.marcgdiez.imagesearchdemo.core.view.RootActivity;
 import javax.inject.Inject;
