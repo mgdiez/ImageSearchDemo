@@ -63,7 +63,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
   }
 
   public void setItems(List<ImageEntity> items) {
-    this.items.addAll(items);
+    this.items = items;
     notifyDataSetChanged();
   }
 
