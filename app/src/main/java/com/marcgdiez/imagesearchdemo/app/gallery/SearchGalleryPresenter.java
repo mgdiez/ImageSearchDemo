@@ -65,4 +65,8 @@ public class SearchGalleryPresenter extends Presenter<SearchGalleryView> {
       }
     });
   }
+
+  public void onHistoricClicked() {
+    storyController.navigateToSearchHistoric();
+  }
 }

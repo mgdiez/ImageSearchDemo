@@ -52,6 +52,13 @@ public class SearchGalleryFragment extends RootFragment implements SearchGallery
     recyclerView.setAdapter(adapter);
   }
 
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    if (item.getItemId() == R.id.historic) {
+      presenter.onHistoricClicked();
+    }
+    return super.onOptionsItemSelected(item);
+  }
+
   @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     inflater.inflate(R.menu.menu, menu);
     searchItem = menu.findItem(R.id.search);
