@@ -4,8 +4,6 @@ import android.os.Bundle;
 import com.marcgdiez.imagesearchdemo.R;
 import com.marcgdiez.imagesearchdemo.app.di.module.ImageSearchComponent;
 import com.marcgdiez.imagesearchdemo.app.di.module.ImageSearchModule;
-import com.marcgdiez.imagesearchdemo.app.gallery.SearchGalleryFragment;
-import com.marcgdiez.imagesearchdemo.app.historic.SearchHistoricFragment;
 import com.marcgdiez.imagesearchdemo.app.story.SearchImagesStoryController;
 import com.marcgdiez.imagesearchdemo.core.ImageSearchApplication;
 import com.marcgdiez.imagesearchdemo.core.di.HasComponent;
@@ -32,8 +30,8 @@ public class MainActivity extends RootActivity implements HasComponent<ImageSear
   }
 
   @Override protected void initializeActivity(Bundle savedInstanceState) {
+    storyController.init(getSupportFragmentManager(), R.id.fragment_container);
     if (savedInstanceState == null) {
-      storyController.init(getSupportFragmentManager(), R.id.fragment_container);
       storyController.navigateToSearchGallery();
     } else {
       storyController.restoreState(savedInstanceState);
