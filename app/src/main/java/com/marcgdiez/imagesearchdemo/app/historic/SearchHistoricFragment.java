@@ -1,6 +1,8 @@
 package com.marcgdiez.imagesearchdemo.app.historic;
 
+import android.support.v4.app.Fragment;
 import android.view.View;
+import com.marcgdiez.imagesearchdemo.R;
 import com.marcgdiez.imagesearchdemo.app.di.module.ImageSearchComponent;
 import com.marcgdiez.imagesearchdemo.app.historic.di.SearchHistoricModule;
 import com.marcgdiez.imagesearchdemo.core.presenter.Presenter;
@@ -11,12 +13,16 @@ public class SearchHistoricFragment extends RootFragment implements SearchHistor
 
   @Inject SearchHistoricPresenter presenter;
 
+  public static Fragment newInstance() {
+    return new SearchHistoricFragment();
+  }
+
   @Override protected void initializePresenter() {
     presenter.setView(this);
   }
 
   @Override protected int getFragmentLayoutResourceId() {
-    return 0;
+    return R.layout.fragment_historic;
   }
 
   @Override protected void initializeView(View view) {

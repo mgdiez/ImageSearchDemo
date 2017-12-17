@@ -1,14 +1,11 @@
 package com.marcgdiez.imagesearchdemo.app;
 
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import com.marcgdiez.imagesearchdemo.R;
 import com.marcgdiez.imagesearchdemo.app.di.module.ImageSearchComponent;
 import com.marcgdiez.imagesearchdemo.app.di.module.ImageSearchModule;
 import com.marcgdiez.imagesearchdemo.app.gallery.SearchGalleryFragment;
+import com.marcgdiez.imagesearchdemo.app.historic.SearchHistoricFragment;
 import com.marcgdiez.imagesearchdemo.app.story.SearchImagesStoryController;
 import com.marcgdiez.imagesearchdemo.core.ImageSearchApplication;
 import com.marcgdiez.imagesearchdemo.core.di.HasComponent;
@@ -36,7 +33,8 @@ public class MainActivity extends RootActivity implements HasComponent<ImageSear
 
   @Override protected void initializeActivity(Bundle savedInstanceState) {
     if (savedInstanceState == null) {
-      addFragment(R.id.fragment_container, SearchGalleryFragment.newInstance());
+      storyController.init(getSupportFragmentManager(), R.id.fragment_container);
+      storyController.navigateToSearchGallery();
     } else {
       storyController.restoreState(savedInstanceState);
     }
@@ -44,12 +42,6 @@ public class MainActivity extends RootActivity implements HasComponent<ImageSear
 
   @Override protected void saveState(Bundle outState) {
     storyController.saveState(outState);
-  }
-
-  protected void addFragment(@IdRes int containerId, @NonNull Fragment fragment) {
-    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-    fragmentTransaction.add(containerId, fragment);
-    fragmentTransaction.commit();
   }
 
   @Override public ImageSearchComponent getComponent() {
