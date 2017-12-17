@@ -9,13 +9,16 @@ import com.marcgdiez.imagesearchdemo.R;
 import com.marcgdiez.imagesearchdemo.app.di.module.ImageSearchComponent;
 import com.marcgdiez.imagesearchdemo.app.di.module.ImageSearchModule;
 import com.marcgdiez.imagesearchdemo.app.gallery.SearchGalleryFragment;
+import com.marcgdiez.imagesearchdemo.app.story.SearchImagesStoryController;
 import com.marcgdiez.imagesearchdemo.core.ImageSearchApplication;
 import com.marcgdiez.imagesearchdemo.core.di.HasComponent;
 import com.marcgdiez.imagesearchdemo.core.view.RootActivity;
+import javax.inject.Inject;
 
 public class MainActivity extends RootActivity implements HasComponent<ImageSearchComponent> {
 
   private ImageSearchComponent imageSearchComponent;
+  @Inject SearchImagesStoryController storyController;
 
   @Override protected void findViews() {
 
@@ -32,7 +35,15 @@ public class MainActivity extends RootActivity implements HasComponent<ImageSear
   }
 
   @Override protected void initializeActivity(Bundle savedInstanceState) {
-    addFragment(R.id.fragment_container, SearchGalleryFragment.newInstance());
+    if (savedInstanceState == null) {
+      addFragment(R.id.fragment_container, SearchGalleryFragment.newInstance());
+    } else {
+      storyController.restoreState(savedInstanceState);
+    }
+  }
+
+  @Override protected void saveState(Bundle outState) {
+    storyController.saveState(outState);
   }
 
   protected void addFragment(@IdRes int containerId, @NonNull Fragment fragment) {
