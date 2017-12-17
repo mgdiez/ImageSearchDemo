@@ -36,6 +36,10 @@ public class SearchHistoricFragment extends RootFragment implements SearchHistor
     return R.layout.fragment_historic;
   }
 
+  @Override protected boolean hasToolbar() {
+    return true;
+  }
+
   @Override protected void initializeView(View view) {
     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     recyclerView.setHasFixedSize(true);

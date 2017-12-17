@@ -1,6 +1,7 @@
 package com.marcgdiez.imagesearchdemo.app;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import com.marcgdiez.imagesearchdemo.R;
 import com.marcgdiez.imagesearchdemo.app.di.module.ImageSearchComponent;
 import com.marcgdiez.imagesearchdemo.app.di.module.ImageSearchModule;
@@ -16,7 +17,7 @@ public class MainActivity extends RootActivity implements HasComponent<ImageSear
   @Inject SearchImagesStoryController storyController;
 
   @Override protected void findViews() {
-
+    //This activity has no views
   }
 
   @Override protected int getLayoutResourceId() {
@@ -38,6 +39,15 @@ public class MainActivity extends RootActivity implements HasComponent<ImageSear
     }
   }
 
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
   @Override protected void saveState(Bundle outState) {
     storyController.saveState(outState);
   }

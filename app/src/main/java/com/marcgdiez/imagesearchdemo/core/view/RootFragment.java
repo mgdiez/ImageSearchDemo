@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
+import com.marcgdiez.imagesearchdemo.app.MainActivity;
 import com.marcgdiez.imagesearchdemo.core.di.HasComponent;
 import com.marcgdiez.imagesearchdemo.core.presenter.Presenter;
 
@@ -38,7 +40,23 @@ public abstract class RootFragment extends Fragment {
     initializeInjector();
     initializeView(view);
     initializePresenter();
+    initToolbar();
   }
+
+  private void initToolbar() {
+    ActionBar supportActionBar = ((MainActivity) getActivity()).getSupportActionBar();
+    if (supportActionBar != null) {
+      if (hasToolbar()) {
+        supportActionBar.setDisplayHomeAsUpEnabled(true);
+        supportActionBar.setDisplayShowHomeEnabled(true);
+      } else {
+        supportActionBar.setDisplayHomeAsUpEnabled(false);
+        supportActionBar.setDisplayShowHomeEnabled(false);
+      }
+    }
+  }
+
+  protected abstract boolean hasToolbar();
 
   protected abstract void initializeView(View view);
 

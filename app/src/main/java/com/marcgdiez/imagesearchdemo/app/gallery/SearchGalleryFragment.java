@@ -44,6 +44,10 @@ public class SearchGalleryFragment extends RootFragment implements SearchGallery
     return R.layout.fragment_search_gallery;
   }
 
+  @Override protected boolean hasToolbar() {
+    return false;
+  }
+
   @Override protected void initializeView(View view) {
     setHasOptionsMenu(true);
     recyclerView.setLayoutManager(new StaggeredGridLayoutManager(ImageAdapter.NUMBER_OF_COLUMNS,
