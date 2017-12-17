@@ -1,4 +1,4 @@
-package com.marcgdiez.imagesearchdemo.core;
+package com.marcgdiez.imagesearchdemo;
 
 import android.app.Application;
 import com.marcgdiez.imagesearchdemo.app.di.component.ApplicationComponent;
@@ -24,5 +24,9 @@ public class ImageSearchApplication extends Application
     applicationComponent =
         DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
     applicationComponent.inject(this);
+  }
+
+  public void setComponent(ApplicationComponent component) {
+    this.applicationComponent = component;
   }
 }

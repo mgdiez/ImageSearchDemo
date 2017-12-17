@@ -25,6 +25,12 @@ android {
     targetCompatibility 1.8
     sourceCompatibility 1.8
   }
+
+  testOptions {
+    unitTests {
+      includeAndroidResources = true
+    }
+  }
 }
 
 dependencies {
@@ -52,7 +58,11 @@ dependencies {
   implementation dependencies.okHttp
 
   testImplementation testDependencies.junit
+  testImplementation testDependencies.robolectric
+  testImplementation testDependencies.robolectricShadows
+  testImplementation testDependencies.daggerMock
   testImplementation testDependencies.mockito
+
   androidTestImplementation testDependencies.testRunner
   androidTestImplementation testDependencies.espresso
 }

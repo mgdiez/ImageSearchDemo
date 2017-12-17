@@ -2,6 +2,7 @@ allprojects {
   repositories {
     jcenter()
     google()
+    maven { url 'https://jitpack.io' }
   }
 }
 
@@ -27,6 +28,9 @@ ext {
   testRunnerVersion = '1.0.1'
   espressoVersion = '3.0.1'
   mockitoVersion = '1.9.5'
+  robolectricVersion = '3.5.1'
+  robolectricVersionShadows = '3.3.2'
+  daggerMockVersion = '0.8.2'
 
   dependencies = [support            : "com.android.support:appcompat-v7:${supportVersion}",
                   constraintLayout   : "com.android.support.constraint:constraint-layout:${constraintVersion}",
@@ -45,8 +49,11 @@ ext {
                   butterKnifeCompiler: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
                   picasso            : "com.squareup.picasso:picasso:${picassoVersion}"]
 
-  testDependencies = [junit     : "junit:junit:${jUnitVersion}",
-                      testRunner: "com.android.support.test:runner:${testRunnerVersion}",
-                      espresso  : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
-                      mockito   : "org.mockito:mockito-core:${mockitoVersion}"]
+  testDependencies = [junit             : "junit:junit:${jUnitVersion}",
+                      testRunner        : "com.android.support.test:runner:${testRunnerVersion}",
+                      espresso          : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+                      mockito           : "org.mockito:mockito-core:${mockitoVersion}",
+                      robolectric       : "org.robolectric:robolectric:${robolectricVersion}",
+                      robolectricShadows: "org.robolectric:shadows-support-v4:${robolectricVersionShadows}",
+                      daggerMock        : "com.github.fabioCollini:DaggerMock:${daggerMockVersion}"]
 }
