@@ -4,4 +4,5 @@
   <string name="error_message">Something went wrong :(</string>
   <string name="no_results">No results found</string>
   <string name="empty_state">Start searching some awesome images</string>
+  <string name="historic">Historic</string>
 </resources>
