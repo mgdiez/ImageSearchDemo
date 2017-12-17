@@ -25,6 +25,7 @@ public class ImagesRepositoryImpl implements ImagesRepository {
   }
 
   @Override public Observable<List<ImageEntity>> getImages(String query) {
+    //Different subscribeOn to perform both calls at same time
     return Observable.concat(flickerDataSource.searchImages(query)
         .onErrorResumeNext(Observable.empty())
         .subscribeOn(Schedulers.io()), twitterNetworkDataSource.searchImages(query)
