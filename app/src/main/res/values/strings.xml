@@ -5,4 +5,5 @@
   <string name="no_results">No results found</string>
   <string name="empty_state">Start searching some awesome images</string>
   <string name="historic">Historic</string>
+  <string name="historic_result">&lt;b>%1$s&lt;/b> had &lt;b>%2$d&lt;/b> results.</string>
 </resources>

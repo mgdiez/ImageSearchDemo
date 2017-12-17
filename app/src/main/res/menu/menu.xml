@@ -6,7 +6,7 @@
       android:id="@+id/historic"
       android:icon="@drawable/clock"
       android:title="@string/historic"
-      app:showAsAction="ifRoom|collapseActionView"
+      app:showAsAction="ifRoom"
       />
 
   <item
