@@ -3,6 +3,8 @@ package com.marcgdiez.imagesearchdemo.app.di.module;
 import com.marcgdiez.imagesearchdemo.app.MainActivity;
 import com.marcgdiez.imagesearchdemo.app.gallery.di.SearchGalleryComponent;
 import com.marcgdiez.imagesearchdemo.app.gallery.di.SearchGalleryModule;
+import com.marcgdiez.imagesearchdemo.app.historic.di.SearchHistoricComponent;
+import com.marcgdiez.imagesearchdemo.app.historic.di.SearchHistoricModule;
 import com.marcgdiez.imagesearchdemo.core.di.PerActivity;
 import dagger.Subcomponent;
 
@@ -11,4 +13,6 @@ public interface ImageSearchComponent {
   void inject(MainActivity activity);
 
   SearchGalleryComponent searchGalleryComponent(SearchGalleryModule module);
+
+  SearchHistoricComponent searchHistoricComponent(SearchHistoricModule searchHistoricModule);
 }
