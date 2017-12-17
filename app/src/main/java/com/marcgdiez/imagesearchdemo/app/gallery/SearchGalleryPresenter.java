@@ -5,6 +5,7 @@ import com.marcgdiez.imagesearchdemo.app.story.SearchImagesState;
 import com.marcgdiez.imagesearchdemo.app.story.SearchImagesStoryController;
 import com.marcgdiez.imagesearchdemo.core.interactor.Interactor;
 import com.marcgdiez.imagesearchdemo.core.presenter.Presenter;
+import com.marcgdiez.imagesearchdemo.entity.HistoricEntity;
 import com.marcgdiez.imagesearchdemo.entity.ImageEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,7 @@ public class SearchGalleryPresenter extends Presenter<SearchGalleryView> {
 
       @Override public void onCompleted() {
         unsubscribe();
+        storyController.getStoryState().addQuery(new HistoricEntity(query, images.size()));
         view.hideProgress();
         if (images.isEmpty()) {
           view.showNoResults();

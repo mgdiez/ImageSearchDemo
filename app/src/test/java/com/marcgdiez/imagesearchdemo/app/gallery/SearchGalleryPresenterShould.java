@@ -3,6 +3,7 @@ package com.marcgdiez.imagesearchdemo.app.gallery;
 import com.marcgdiez.imagesearchdemo.app.gallery.usecase.SearchImagesUseCase;
 import com.marcgdiez.imagesearchdemo.app.story.SearchImagesState;
 import com.marcgdiez.imagesearchdemo.app.story.SearchImagesStoryController;
+import com.marcgdiez.imagesearchdemo.entity.HistoricEntity;
 import com.marcgdiez.imagesearchdemo.entity.ImageEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +55,9 @@ public class SearchGalleryPresenterShould {
   }
 
   @Test public void show_images_on_initialize_if_has() {
-    when(mockStoryController.getStoryState()).thenReturn(mock(SearchImagesState.class));
+    SearchImagesState mockSearchImagesState = Mockito.mock(SearchImagesState.class);
+    when(mockStoryController.getStoryState()).thenReturn(mockSearchImagesState);
+    when(mockSearchImagesState.getImageList()).thenReturn(createFakeImages());
 
     presenter.start();
 
@@ -69,6 +72,8 @@ public class SearchGalleryPresenterShould {
   }
 
   @Test public void show_no_results_on_complete_without_images() {
+    when(mockStoryController.getStoryState()).thenReturn(new SearchImagesState());
+
     doAnswer(invocation -> {
       ((Subscriber) invocation.getArguments()[1]).onCompleted();
       return null;
@@ -81,6 +86,8 @@ public class SearchGalleryPresenterShould {
   }
 
   @Test public void hide_progress_on_completed() {
+    when(mockStoryController.getStoryState()).thenReturn(new SearchImagesState());
+
     doAnswer(invocation -> {
       ((Subscriber) invocation.getArguments()[1]).onCompleted();
       return null;
@@ -90,6 +97,23 @@ public class SearchGalleryPresenterShould {
     presenter.onQuerySubmitted("FooQuery");
 
     verify(mockView).hideProgress();
+  }
+
+  @Test public void save_query_to_state() {
+    SearchImagesState searchImagesState = Mockito.mock(SearchImagesState.class);
+
+    when(mockStoryController.getStoryState()).thenReturn(searchImagesState);
+
+    doAnswer(invocation -> {
+      ((Subscriber) invocation.getArguments()[1]).onNext(createFakeImages());
+      ((Subscriber) invocation.getArguments()[1]).onCompleted();
+      return null;
+    }).when(mockSearchImagesUseCase).execute(anyString(), any(Subscriber.class));
+
+    presenter.start();
+    presenter.onQuerySubmitted("FooQuery");
+
+    verify(searchImagesState).addQuery(any(HistoricEntity.class));
   }
 
   @Test public void show_data_on_completed_with_images() {
